@@ -1,0 +1,28 @@
+{
+  "name": "memory-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "^2.1.1",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-devtools": "^3.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FxBresson/memory-redux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FxBresson/memory-redux/issues"
+  },
+  "homepage": "https://github.com/FxBresson/memory-redux#readme"
+}
