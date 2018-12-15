@@ -5,8 +5,9 @@ const Card = ({ onClick, id, toggled }) => (
     <div
         onClick={onClick}
         className={toggled ? 's-toggled' : 's-normal'}
-        style={{backgroundImage: `https://deckofcardsapi.com/static/img/${id}.png`}}
-    ></div>
+    >
+        <img src={`https://deckofcardsapi.com/static/img/${id}.png`} alt="" />
+    </div>
 )
 
 Card.propTypes = {

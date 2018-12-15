@@ -4,6 +4,10 @@ import Board from './Board'
 import Timer from './Timer'
 import Footer from './Footer'
 
+import { Provider } from 'react-redux'
+
+import CardsOnBoard from '../containers/CardsOnBoard'
+
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
@@ -28,11 +32,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Timer />
-        <Board />
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Timer />
+          <CardsOnBoard />
+          <Footer />
+        </div>
+      </Provider>
     );
   }
 }
