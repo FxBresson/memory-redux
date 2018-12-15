@@ -6,7 +6,6 @@ const card = (state = [], action) => {
                 {
                     id: action.id,
                     toggled: false,
-                    image: action.image
                 }
             ]
             
