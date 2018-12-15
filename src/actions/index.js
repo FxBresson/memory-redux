@@ -11,25 +11,34 @@ export const toggleCard = id => ({
     id
 })
 
-
-
-//TEST
-export const receiveDeck = (json) => ({
-    type: 'RECEIVE_DECK',
-    // idDeck: json.data.children.map(child => child.data)
-    idDeck: json.deck_id
+export const receiveCards = (cards) => ({
+    type: 'RECEIVE_CARDS',
+    cards: cards
 })
 
+
+export function fetchCards(idDeck) {
+    return function(dispatch) {  
+      return fetch(`https://deckofcardsapi.com/api/deck/${idDeck}/draw/?count=52`)
+        .then(
+          response => response.json(),
+          error => console.log('Can not get cards.', error)
+        )
+        .then(json => {
+          dispatch(receiveCards(json.cards)) 
+        })
+    }
+}
 
 export function fetchDeck() {
     return function(dispatch) {  
       return fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)
         .then(
           response => response.json(),
-          error => console.log('An error occurred.', error)
+          error => console.log('Can not get deck.', error)
         )
-        .then(json => 
-          dispatch(receiveDeck(json)) 
-        )
+        .then(json => {
+            dispatch(fetchCards(json.deck_id)) 
+        })
     }
-  }
+}
