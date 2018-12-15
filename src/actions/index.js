@@ -24,3 +24,14 @@
 //   SHOW_COMPLETED: 'SHOW_COMPLETED',
 //   SHOW_ACTIVE: 'SHOW_ACTIVE'
 // }
+
+export const addCard = (id, image) => ({
+    type: 'ADD_CARD',
+    id,
+    image
+})
+
+export const toggleCard = id => ({
+    type: 'TOGGLE_CARD',
+    id
+})
