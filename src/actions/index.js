@@ -1,37 +1,23 @@
-// export const addTodo = text => ({
-//   type: 'ADD_TODO',
-//   id: nextTodoId++,
-//   text
-// })
+import { createStore } from 'redux'
+// import { Timer } from '../components/Timer'
+import timer from '../reducers/timer';
 
-// export const setVisibilityFilter = filter => ({
-//   type: 'SET_VISIBILITY_FILTER',
-//   filter
-// })
+const store = createStore(timer);
 
-// export const toggleTodo = id => ({
-//   type: 'TOGGLE_TODO',
-//   id
-// })
+store.subscribe(timer);
 
-// export const starsTodo = id => ({
-//   type: 'STARS_TODO',
-//   id
-// })
-
-// export const VisibilityFilters = {
-//   SHOW_ALL: 'SHOW_ALL',
-//   SHOW_COMPLETED: 'SHOW_COMPLETED',
-//   SHOW_ACTIVE: 'SHOW_ACTIVE'
-// }
-
-export const addCard = (id, image) => ({
-    type: 'ADD_CARD',
-    id,
-    image
-})
-
-export const toggleCard = id => ({
-    type: 'TOGGLE_CARD',
-    id
-})
+let interval = null;
+store.subscribe(() => {
+    if (store.getState().running && interval === null) {
+        interval = setInterval(() => {
+            store.dispatch({
+                type: 'TICK',
+                time: Date.now()
+            });
+        });
+    }
+    if (!store.getState().running && interval !== null) {
+        clearInterval(interval);
+        interval = null;
+    }
+});
