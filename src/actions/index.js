@@ -1,29 +1,4 @@
-// export const addTodo = text => ({
-//   type: 'ADD_TODO',
-//   id: nextTodoId++,
-//   text
-// })
-
-// export const setVisibilityFilter = filter => ({
-//   type: 'SET_VISIBILITY_FILTER',
-//   filter
-// })
-
-// export const toggleTodo = id => ({
-//   type: 'TOGGLE_TODO',
-//   id
-// })
-
-// export const starsTodo = id => ({
-//   type: 'STARS_TODO',
-//   id
-// })
-
-// export const VisibilityFilters = {
-//   SHOW_ALL: 'SHOW_ALL',
-//   SHOW_COMPLETED: 'SHOW_COMPLETED',
-//   SHOW_ACTIVE: 'SHOW_ACTIVE'
-// }
+import fetch from 'cross-fetch'
 
 export const addCard = (id, image) => ({
     type: 'ADD_CARD',
@@ -35,3 +10,26 @@ export const toggleCard = id => ({
     type: 'TOGGLE_CARD',
     id
 })
+
+
+
+//TEST
+export const receiveDeck = (json) => ({
+    type: 'RECEIVE_DECK',
+    // idDeck: json.data.children.map(child => child.data)
+    idDeck: json.deck_id
+})
+
+
+export function fetchDeck() {
+    return function(dispatch) {  
+      return fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)
+        .then(
+          response => response.json(),
+          error => console.log('An error occurred.', error)
+        )
+        .then(json => 
+          dispatch(receiveDeck(json)) 
+        )
+    }
+  }

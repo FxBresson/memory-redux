@@ -9,6 +9,7 @@ const card = (state = [], action) => {
                     image: action.image
                 }
             ]
+            
         case 'TOGGLE_CARD': 
             return state.map(
                 card => 
