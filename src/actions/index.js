@@ -16,6 +16,17 @@ export const receiveCards = (cards) => ({
     cards: cards
 })
 
+export function verifyCouple(cards, id) {
+    return function(dispatch) {
+        console.log(cards)
+        console.log('test')
+        setTimeout(() => {
+            let temp = cards.filter(card => card.toggled)
+            if (temp.length !== 2 || temp[0].id !== temp[1].id )
+                dispatch(toggleCard(id))
+        }, 1000)
+    }
+}
 
 export function fetchCards(idDeck) {
     return function(dispatch) {  

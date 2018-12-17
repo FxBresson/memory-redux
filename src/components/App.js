@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Board from './Board'
 import Timer from './Timer'
 import Footer from './Footer'
 
