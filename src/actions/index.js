@@ -11,6 +11,11 @@ export const toggleCard = id => ({
     id
 })
 
+export const foundCard = id => ({
+    type: 'FOUND_CARD',
+    id
+})
+
 export const receiveCards = (cards) => ({
     type: 'RECEIVE_CARDS',
     cards: cards
@@ -24,12 +29,16 @@ export function verifyCouple(cards, id) {
         console.log(cards)
         console.log('test')
         setTimeout(() => {
-            let temp = cards.filter(card => card.toggled)
+            let temp = cards.filter(card => card.toggled && !card.found)
             console.log(temp)
-            if ( temp.length === 1 && temp[0].id !== id ) {
-                console.log(id)
-                dispatch(toggleCard(temp[0].id))
-                dispatch(toggleCard(id))
+            if ( temp.length === 1 ) {
+                if (temp[0].value === cards.find(c => c.id === id).value) {
+                    dispatch(foundCard(temp[0].id))
+                    dispatch(foundCard(id))
+                } else {
+                    dispatch(toggleCard(temp[0].id))
+                    dispatch(toggleCard(id))
+                }
             }
         }, 1000)
     }

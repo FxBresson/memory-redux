@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Card = ({ id, onClick, toggled }) => (
+const Card = ({ id, value, onClick, toggled }) => (
     <div
         onClick={onClick}
         className={toggled ? 'card s-toggled' : 'card s-normal'}
     >
-        <img src={`https://deckofcardsapi.com/static/img/${id}.png`} alt="" />
+        <img src={`https://deckofcardsapi.com/static/img/${value}.png`} alt="" />
         <div className="cardback"></div>
     </div>
 )
