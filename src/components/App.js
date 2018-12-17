@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import '../App.css';
-import Timer from './Timer'
-import Footer from './Footer'
-
 import { Provider } from 'react-redux'
-
-import CardsOnBoard from '../containers/CardsOnBoard'
-
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
+
+import '../App.css';
+import Timer from './Timer'
+import Footer from './Footer'
+import CardsOnBoard from '../containers/CardsOnBoard'
 import { fetchDeck } from '../actions/index'
 import rootReducer from '../reducers/index'
 

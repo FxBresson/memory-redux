@@ -3,13 +3,13 @@ const cards = (state = [], action) => {
         case 'RECEIVE_CARDS': 
             return action.cards.map(
                 card => {
-                    return{
+                    return {
                         id: card.code,
                         toggled: false
                     } 
                 }
             )
-            
+            // return state.cards = [...state.cards, ...newCards]
         case 'TOGGLE_CARD': 
             return state.map(
                 card => 
