@@ -5,7 +5,7 @@ import Card from './Card'
 const Board = ({ cards, toggleCard }) => (
     <ul>
         {cards.map(card => (
-            <Card key={card.id} {...card} onClick={() => toggleCard(card.id)} />
+            <Card key={card.id} {...card} onClick={() => toggleCard(card.id, cards)} />
         ))}
     </ul>
 )

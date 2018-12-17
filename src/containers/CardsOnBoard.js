@@ -6,10 +6,10 @@ const mapStateToProps = state => ({
     cards: state.cards
 })
 
-const mapDispatchToProps = (dispatch, state) => ({
-    toggleCard: id => {
+const mapDispatchToProps = (dispatch) => ({
+    toggleCard: (id, cards) => {
         dispatch(toggleCard(id))
-        dispatch(verifyCouple(state.cards, id))
+        dispatch(verifyCouple(cards, id))
     }
 })
 

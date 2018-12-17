@@ -25,8 +25,12 @@ export function verifyCouple(cards, id) {
         console.log('test')
         setTimeout(() => {
             let temp = cards.filter(card => card.toggled)
-            if ( temp.length === 2 && temp[0].id !== temp[1].id )
+            console.log(temp)
+            if ( temp.length === 1 && temp[0].id !== id ) {
+                console.log(id)
+                dispatch(toggleCard(temp[0].id))
                 dispatch(toggleCard(id))
+            }
         }, 1000)
     }
 }
