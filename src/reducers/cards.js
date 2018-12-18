@@ -14,8 +14,11 @@ const cards = (state = [], action) => {
             temp = [...temp.map(card => { return {...card, id:card.id+'_A' } }),
                     ...temp.map(card => { return {...card, id:card.id+'_B' } })]
 
+            var shuffle = require('shuffle-array')
+            temp = shuffle(temp, { 'copy': true });
+
             return temp
-            // return state.cards = [...state.cards, ...newCards]
+
         case 'TOGGLE_CARD': 
             return state.map(
                 card => 
