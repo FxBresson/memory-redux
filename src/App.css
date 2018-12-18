@@ -6,3 +6,40 @@ html, body {
   padding: 0;
   margin: 0;
 }
+
+ul {
+  perspective: 1500px;
+}
+
+.card {
+  height: 100px;
+  width: 72px;
+  transition: 0.2s;
+  transform-style: preserve-3d;
+  position: relative;
+  display: inline-block;
+}
+
+.card img, .card .cardback {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card .cardback {
+  background-color: lightcoral;
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  border: 1px solid black;
+  border-radius: 5px;
+
+}
+
+.card.s-normal {
+  transform: rotateY(180deg)
+}
+
+.card.s-toggled {
+  transform: rotateY(0deg)
+}

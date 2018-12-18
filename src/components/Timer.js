@@ -11,6 +11,7 @@ export class Timer extends React.Component {
         this.stop = this.stop.bind(this);
     }
 
+
     start() {
         store.dispatch({
             type: 'START',
