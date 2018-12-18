@@ -1,19 +1,17 @@
 import { connect } from 'react-redux'
-import { toggleCard, verifyCouple } from '../actions'
-import Board from '../components/Board'
+import { startTimer, stopTimer } from '../actions'
+import {TimerComponent} from "../components/Timer";
 
 const mapStateToProps = state => ({
-    cards: state.cards
+    timer: state
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    toggleCard: (id, cards) => {
-        dispatch(toggleCard(id))
-        dispatch(verifyCouple(cards, id))
-    }
+    startTimer: () => { dispatch(startTimer()); },
+    stopTimer: () => { dispatch(stopTimer()); },
 })
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Board)
+)(TimerComponent)

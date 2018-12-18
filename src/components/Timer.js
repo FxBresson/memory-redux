@@ -1,30 +1,23 @@
 import React from 'react'
 
-export class Timer extends React.Component {
+export class TimerComponent extends React.Component {
     constructor() {
         super();
     }
 
-    format(time) {
-        const pad = (time, length) => {
-            while (time.length < length) {
-                time = '0' + time;
-            }
-            return time;
-        };
-
-        time = new Date(time);
-        let m = pad(time.getMinutes().toString(), 2);
-        let s = pad(time.getSeconds().toString(), 2);
-        let ms = pad(time.getMilliseconds().toString(), 3);
-
-        return `${m} : ${s} . ${ms}`;
-    }
-
     render() {
+        function getElapsedTime(baseTime, start, stop = new Date().getTime()) {
+            return (!start) ? 0 : stop - start + baseTime;
+        }
+
+        const { baseTime, start, stop } = this.props;
+        const elapsed = getElapsedTime(baseTime, start, stop);
+
         return (
             <div>
-                <p>Time: {this.format(this.props.time)}</p>
+                <p>Time: {elapsed}</p>
+                <button onClick={() => this.props.startTimer(elapsed)}>Start</button>
+                <button onClick={() => this.props.stopTimer()}>Stop</button>
             </div>
         );
     }

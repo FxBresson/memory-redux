@@ -37,11 +37,11 @@ export const stopTimer = () => ({
 export function verifyCouple(cards, id) {
     return function(dispatch) {
         // UNDEFINED ?
-        console.log(cards)
-        console.log('test')
+        //console.log(cards)
+        //console.log('test')
         setTimeout(() => {
             let temp = cards.filter(card => card.toggled && !card.found)
-            console.log(temp)
+            //console.log(temp)
             if ( temp.length === 1 ) {
                 if (temp[0].value === cards.find(c => c.id === id).value) {
                     dispatch(foundCard(temp[0].id))

@@ -5,9 +5,9 @@ import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
 
 import '../App.css';
-import {Timer} from './Timer'
 import Footer from './Footer'
 import CardsOnBoard from '../containers/CardsOnBoard'
+import Timer from '../containers/Timer'
 import { fetchDeck } from '../actions/index'
 import rootReducer from '../reducers/index'
 
