@@ -1,8 +1,8 @@
 import fetch from 'cross-fetch'
 
-export const play = (nbCards) => ({
-    type: 'PLAY',
-    nbCards: nbCards
+export const play = (difficulty) => ({
+    type: 'LAUCH_GAME',
+    difficulty: difficulty
 })
 
 export const receiveCards = (cards) => ({
@@ -50,8 +50,8 @@ export function verifyCouple(cards, id) {
     }
 }
 
-export function fetchCards(idDeck) {
-    let nbCards = 10
+export function fetchCards(idDeck, difficulty) {
+    let nbCards = difficulty === 'easy' ? 5 : 10
     return function(dispatch) {  
       return fetch(`https://deckofcardsapi.com/api/deck/${idDeck}/draw/?count=${nbCards}`)
         .then(
@@ -60,11 +60,12 @@ export function fetchCards(idDeck) {
         )
         .then(json => {
           dispatch(receiveCards(json.cards)) 
+          dispatch(play(difficulty)) 
         })
     }
 }
 
-export function fetchDeck() {
+export function fetchDeck(difficulty) {
     return function(dispatch) {  
       return fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)
         .then(
@@ -72,7 +73,7 @@ export function fetchDeck() {
           error => console.log('Can not get deck.', error)
         )
         .then(json => {
-            dispatch(fetchCards(json.deck_id)) 
+            dispatch(fetchCards(json.deck_id, difficulty)) 
         })
     }
 }

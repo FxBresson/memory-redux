@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 
 import '../App.css';
 import Footer from './Footer'
-import Section from './Section'
+import Main from '../containers/Main'
 import { fetchDeck } from '../actions/index'
 import rootReducer from '../reducers/index'
 
@@ -15,6 +15,7 @@ const loggerMiddleware = createLogger()
 
 const store = createStore(
   rootReducer,
+  {gameLogic: {status: 'difficulty-selection'}},
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware // neat middleware that logs actions
@@ -24,13 +25,17 @@ const store = createStore(
 class App extends Component {
   constructor () {
     super()
-    store.dispatch(fetchDeck()).then(() => console.log("Deck and cards received"))
+    // store.dispatch(fetchDeck()).then(() => console.log("Deck and cards received"))
   }
   render() {
+
+    let status = store.getState().gameLogic.status;
+    console.log('test')
+
     return (
       <Provider store={store}>
         <div className="App">
-          <Section />
+          <Main />
           <Footer />
         </div>
       </Provider>
