@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Card = ({ id, value, onClick, toggled }) => (
+const Card = ({ value, onClick, toggled }) => (
     <div
         onClick={onClick}
         className={toggled ? 'card s-toggled' : 'card s-normal'}
@@ -12,7 +12,6 @@ const Card = ({ id, value, onClick, toggled }) => (
 )
 
 Card.propTypes = {
-    id: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     toggled: PropTypes.bool.isRequired
 }

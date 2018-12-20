@@ -10,10 +10,10 @@ const cards = (state = [], action) => {
                 } 
             })
 
-            temp = temp.slice(0, 10);
             temp = [...temp.map(card => { return {...card, id:card.id+'_A' } }),
                     ...temp.map(card => { return {...card, id:card.id+'_B' } })]
 
+            // Shuffle card
             var shuffle = require('shuffle-array')
             temp = shuffle(temp, { 'copy': true });
 
@@ -30,6 +30,9 @@ const cards = (state = [], action) => {
                 card => 
                     card.id === action.id ? {...card, found: true} : card
             )
+        
+        // case 'Play':
+        //     return 
 
         default:
             return state

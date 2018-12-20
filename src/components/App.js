@@ -6,8 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 
 import '../App.css';
 import Footer from './Footer'
-import CardsOnBoard from '../containers/CardsOnBoard'
-import Timer from '../containers/Timer'
+import Section from './Section'
 import { fetchDeck } from '../actions/index'
 import rootReducer from '../reducers/index'
 
@@ -31,8 +30,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Timer />
-          <CardsOnBoard />
+          <Section />
           <Footer />
         </div>
       </Provider>

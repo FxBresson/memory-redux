@@ -13,7 +13,6 @@ const Board = ({ cards, toggleCard }) => (
 Board.propTypes = {
     cards: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
         toggled: PropTypes.bool.isRequired
       }).isRequired
     ).isRequired,

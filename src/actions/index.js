@@ -1,9 +1,13 @@
 import fetch from 'cross-fetch'
 
-export const addCard = (id, image) => ({
-    type: 'ADD_CARD',
-    id,
-    image
+export const play = (nbCards) => ({
+    type: 'PLAY',
+    nbCards: nbCards
+})
+
+export const receiveCards = (cards) => ({
+    type: 'RECEIVE_CARDS',
+    cards: cards
 })
 
 export const toggleCard = id => ({
@@ -14,11 +18,6 @@ export const toggleCard = id => ({
 export const foundCard = id => ({
     type: 'FOUND_CARD',
     id
-})
-
-export const receiveCards = (cards) => ({
-    type: 'RECEIVE_CARDS',
-    cards: cards
 })
 
 export const startTimer = (baseTime = 0) => ({
@@ -36,12 +35,8 @@ export const stopTimer = () => ({
 // FUNCTIONS
 export function verifyCouple(cards, id) {
     return function(dispatch) {
-        // UNDEFINED ?
-        //console.log(cards)
-        //console.log('test')
         setTimeout(() => {
             let temp = cards.filter(card => card.toggled && !card.found)
-            //console.log(temp)
             if ( temp.length === 1 ) {
                 if (temp[0].value === cards.find(c => c.id === id).value) {
                     dispatch(foundCard(temp[0].id))
@@ -56,8 +51,9 @@ export function verifyCouple(cards, id) {
 }
 
 export function fetchCards(idDeck) {
+    let nbCards = 10
     return function(dispatch) {  
-      return fetch(`https://deckofcardsapi.com/api/deck/${idDeck}/draw/?count=52`)
+      return fetch(`https://deckofcardsapi.com/api/deck/${idDeck}/draw/?count=${nbCards}`)
         .then(
           response => response.json(),
           error => console.log('Can not get cards.', error)
