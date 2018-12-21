@@ -20,17 +20,15 @@ export const foundCard = id => ({
     id
 })
 
-export const startTimer = (baseTime = 0) => ({
+export const startTimer = () => ({
     type: 'START_TIMER',
-    baseTime: baseTime,
-    now: new Date().getTime()
+    time: 0
 });
 
-export const stopTimer = () => ({
+export const stopTimer = time => ({
     type: 'STOP_TIMER',
-    now: new Date().getTime()
+    time: time
 });
-
 
 // FUNCTIONS
 export function verifyCouple(cards, id) {
@@ -77,3 +75,4 @@ export function fetchDeck(difficulty) {
         })
     }
 }
+

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Home from '../containers/HomeSection'
 import Game from './Game'
 
@@ -14,7 +14,7 @@ const Container = ({ status }) => (
     </main>
 )
 
-Container.propTypes = {
-}
+// Container.propTypes = {
+// }
 
 export default Container

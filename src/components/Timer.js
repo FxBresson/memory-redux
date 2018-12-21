@@ -1,24 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export class TimerComponent extends React.Component {
-    constructor() {
-        super();
-    }
+const Timer = ({ onClick }) => (
+    <div>
+        <p>Time: {time}</p>
+        <button onClick={onClick} style={time === 0 ? "display: block;" : "display: none;"}>Start</button>
+    </div>
+)
 
-    render() {
-        function getElapsedTime(baseTime, start, stop = new Date().getTime()) {
-            return (!start) ? 0 : stop - start + baseTime;
-        }
-
-        const { baseTime, start, stop } = this.props;
-        const elapsed = getElapsedTime(baseTime, start, stop);
-
-        return (
-            <div>
-                <p>Time: {elapsed}</p>
-                <button onClick={() => this.props.startTimer(elapsed)}>Start</button>
-                <button onClick={() => this.props.stopTimer()}>Stop</button>
-            </div>
-        );
-    }
+Timer.propTypes = {
+    onClick: PropTypes.func.isRequired
 }
+
+// function timerRunning() {
+//     // return function(dispatch) {
+//         let time = 0
+//         setTimeout(() => {
+//             time++
+//         }, 1000)
+//     // }
+//     return time
+// }
+
+export default Timer

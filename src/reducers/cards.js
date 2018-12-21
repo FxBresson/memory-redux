@@ -30,9 +30,6 @@ const cards = (state = [], action) => {
                 card => 
                     card.id === action.id ? {...card, found: true} : card
             )
-        
-        // case 'Play':
-        //     return 
 
         default:
             return state
