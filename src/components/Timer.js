@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Timer = ({ onClick, time }) => (
     <div>
         <p>Time: {time}</p>
-        <button onClick={onClick} style={time === 0 ? "display: block;" : "display: none;"}>Start</button>
+        <button onClick={onClick}>Start</button>
     </div>
 )
 
