@@ -10,7 +10,7 @@ export class TimerComponent extends React.Component {
             return (!start) ? 0 : stop - start + baseTime;
         }
 
-        const { baseTime, start, stop } = this.props;
+        const { baseTime, start, stop } = this.props.timer.timer;
         const elapsed = getElapsedTime(baseTime, start, stop);
 
         return (
