@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { startTimer, stopTimer } from '../actions'
-import {TimerComponent} from "../components/Timer";
+import { Timer } from "../components/Timer";
 
 const mapStateToProps = state => ({
     timer: state
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(TimerComponent)
+)(Timer)

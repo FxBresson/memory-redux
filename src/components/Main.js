@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Home from '../containers/HomeSection'
+import Home from '../containers/Home'
 import Game from './Game'
 
-const Container = ({ status }) => (
+const Main = ({ status }) => (
     <main>
         {status === 'difficulty-selection'
         && <Home />
@@ -14,7 +14,7 @@ const Container = ({ status }) => (
     </main>
 )
 
-Container.propTypes = {
+Main.propTypes = {
 }
 
-export default Container
+export default Main
