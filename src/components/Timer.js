@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class TimerComponent extends React.Component {
+export class Timer extends React.Component {
     constructor() {
         super();
     }
