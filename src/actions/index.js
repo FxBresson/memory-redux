@@ -5,6 +5,14 @@ export const play = (difficulty) => ({
     difficulty: difficulty
 })
 
+export const endGame = () => ({
+    type: 'END_GAME'
+})
+
+export const restart = () => ({
+    type: 'RESTART_GAME'
+})
+
 export const receiveCards = (cards) => ({
     type: 'RECEIVE_CARDS',
     cards: cards
@@ -33,18 +41,24 @@ export const stopTimer = time => ({
 // FUNCTIONS
 export function verifyCouple(cards, id) {
     return function(dispatch) {
-        setTimeout(() => {
-            let temp = cards.filter(card => card.toggled && !card.found)
-            if ( temp.length === 1 ) {
-                if (temp[0].value === cards.find(c => c.id === id).value) {
-                    dispatch(foundCard(temp[0].id))
-                    dispatch(foundCard(id))
-                } else {
+        let temp = cards.filter(card => card.toggled && !card.found)
+        if ( temp.length === 1 ) {
+            if (temp[0].value === cards.find(c => c.id === id).value) {
+                dispatch(foundCard(temp[0].id))
+                dispatch(foundCard(id))
+
+                if (cards.filter(card => card.found).length === cards.length - 2) {
+                    setTimeout(() => {
+                        alert('END')
+                    }, 1000)
+                }
+            } else {
+                setTimeout(() => {
                     dispatch(toggleCard(temp[0].id))
                     dispatch(toggleCard(id))
-                }
+                }, 1000)
             }
-        }, 1000)
+        }
     }
 }
 
