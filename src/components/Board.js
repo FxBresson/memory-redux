@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Card from './Card'
 
 const Board = ({ cards, toggleCard }) => (
-    <ul>
+    <ul className='cardsList'>
         {cards.map(card => (
             <Card key={card.id} {...card} onClick={() => toggleCard(card.id, cards)} />
         ))}

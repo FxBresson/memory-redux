@@ -35,6 +35,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
+          <h1>
+              <img src="logo.png" className='logo' alt="logo"/>
+              <span>Memory Cards</span>
+          </h1>
           <Main />
           <Footer />
         </div>
