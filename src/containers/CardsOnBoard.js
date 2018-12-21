@@ -8,8 +8,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     toggleCard: (id , cards) => {
-        dispatch(toggleCard(id))
-        dispatch(verifyCouple(cards, id))
+        if (cards.filter(card => card.toggled === true).length - cards.filter(card => card.found === true).length < 2 
+        && !cards.find(card => card.id === id).toggled) {
+            dispatch(toggleCard(id))
+            dispatch(verifyCouple(cards, id))
+        }
     }
 })
 
