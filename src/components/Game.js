@@ -1,12 +1,12 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import CardsOnBoard from '../containers/CardsOnBoard'
+import PropTypes from 'prop-types'
+import Board from '../containers/Board'
 import Timer from '../containers/Timer'
 
 const Game = () => (
     <section>
         <Timer/>
-        <CardsOnBoard/>
+        <Board/>
     </section>
 )
 
