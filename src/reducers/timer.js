@@ -1,26 +1,20 @@
-const initialState = {
-    start: undefined,
-    stop: undefined,
-    baseTime: undefined
-};
-
-const timer = (state = initialState, action) => {
+const timer = (state = [], action) => {
     switch (action.type) {
-        case 'START_TIMER':
-            return {
-                ...state,
-                baseTime: action.baseTime,
-                start: action.now,
-                stop: undefined
-            };
         case 'STOP_TIMER':
             return {
                 ...state,
-                stop: action.now
-            };
+                time: action.time
+            }
+        
+        case 'START_TIMER':
+            return {
+                ...state,
+                time: 0
+            }
+
         default:
-            return state;
+            return state
     }
 };
 
-export default timer;
+export default timer

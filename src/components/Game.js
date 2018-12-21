@@ -10,7 +10,7 @@ const Game = () => (
     </section>
 )
 
-Game.propTypes = {
-}
+// Game.propTypes = {
+// }
 
 export default Game

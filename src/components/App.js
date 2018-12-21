@@ -7,7 +7,6 @@ import { createStore, applyMiddleware } from 'redux'
 import '../App.css';
 import Footer from './Footer'
 import Main from '../containers/Main'
-import { fetchDeck } from '../actions/index'
 import rootReducer from '../reducers/index'
 
 
