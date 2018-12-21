@@ -49,7 +49,7 @@ export function verifyCouple(cards, id) {
 
                 if (cards.filter(card => card.found).length === cards.length - 2) {
                     setTimeout(() => {
-                        alert('END')
+                        dispatch(endGame())
                     }, 1000)
                 }
             } else {
@@ -63,7 +63,7 @@ export function verifyCouple(cards, id) {
 }
 
 export function fetchCards(idDeck, difficulty) {
-    let nbCards = difficulty === 'easy' ? 5 : 10
+    let nbCards = difficulty === 'easy' ? 1 : 10
     return function(dispatch) {  
       return fetch(`https://deckofcardsapi.com/api/deck/${idDeck}/draw/?count=${nbCards}`)
         .then(

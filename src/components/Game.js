@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Board from '../containers/Board'
-import Timer from '../containers/Timer'
+import Timer from './Timer'
 
 const Game = () => (
     <section>

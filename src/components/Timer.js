@@ -1,25 +1,36 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const Timer = ({ onClick, time }) => (
-    <div>
-        <p>Time: {time}</p>
-        <button onClick={onClick}>Start</button>
-    </div>
-)
+class Timer extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            time: 0
+		}
+		this.intervalHandler = null
+    }
 
-Timer.propTypes = {
-    onClick: PropTypes.func.isRequired
+    tick() {
+		let newState = Object.assign({}, this.state, {
+			time: this.state.time+1
+		})
+		this.setState(newState);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalHandler)
+    }
+    
+    componentDidMount() {
+        this.intervalHandler = setInterval(this.tick.bind(this), 1000)
+	}
+
+    render() {
+        return (
+            <div>
+                <p>Time: {this.state.time}</p>
+            </div>
+        )
+    }
 }
-
-// function timerRunning() {
-//     // return function(dispatch) {
-//         let time = 0
-//         setTimeout(() => {
-//             time++
-//         }, 1000)
-//     // }
-//     return time
-// }
 
 export default Timer
