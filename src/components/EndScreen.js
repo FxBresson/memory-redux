@@ -1,4 +1,5 @@
 import React from 'react'
+import { timeToString, dateToString } from '../Helper'
 
 const EndScreen = ({history, restart}) => (
   <section>
@@ -13,15 +14,15 @@ const EndScreen = ({history, restart}) => (
       <tbody>
         {history.map((game, index) => (
           <tr key={index}>
-            <td>{game.startTime}</td>
-            <td>{game.time}</td>
+            <td>{dateToString(game.startTime)}</td>
+            <td>{timeToString(game.time)}</td>
             <td>{game.difficulty}</td>
           </tr>
         ))}
       </tbody>
     </table>
 
-    <button onClick={restart}>Play again</button>
+    <button className="btn" onClick={restart}>Play again</button>
   </section>
 )
 

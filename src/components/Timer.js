@@ -1,4 +1,5 @@
 import React from 'react'
+import { timerToString } from '../Helper'
 
 class Timer extends React.Component {
     constructor() {
@@ -27,7 +28,7 @@ class Timer extends React.Component {
     render() {
         return (
             <div>
-                <p>Time: {this.state.time}</p>
+                <p>Time: {timerToString(this.state.time)}</p>
             </div>
         )
     }
