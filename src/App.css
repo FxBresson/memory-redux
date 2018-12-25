@@ -112,6 +112,19 @@ h1 span {
   transform: rotateY(0deg)
 }
 
+/* END SCREEN */
+.m-scoreboard {
+  margin: 1em auto;
+}
+
+.m-scoreboard td , .m-scoreboard th {
+  padding: 1em;
+}
+
+.m-scoreboard td {
+  border: 1px solid black;
+}
+
 
 /* FOOTER */
 

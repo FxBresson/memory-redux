@@ -11,10 +11,17 @@ import rootReducer from '../reducers/index'
 
 
 const loggerMiddleware = createLogger()
+const defaultState = {
+  gameLogic: {
+    status: 'difficulty-selection',
+    history: []
+  }
+}
+
 
 const store = createStore(
   rootReducer,
-  {gameLogic: {status: 'difficulty-selection'}},
+  defaultState,
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     loggerMiddleware // neat middleware that logs actions

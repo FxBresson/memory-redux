@@ -9,13 +9,20 @@ const gameLogic = (state = [], action) => {
                 time: 0
             }
         case 'END_GAME': 
-            let endTime = Date.now();
-            let time = endTime - state.startTime;
+            let time = Date.now() - state.startTime;
 
             return {
                 ...state,
                 status: 'end',
-                time: time
+                time: time,
+                history: [
+                    {
+                        startTime: state.startTime,
+                        difficulty: state.difficulty,
+                        time: time
+                    },
+                    ...state.history,
+                ]
             }
         case 'RESTART_GAME':
             return {
