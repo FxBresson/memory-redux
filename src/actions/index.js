@@ -39,20 +39,26 @@ export const stopTimer = time => ({
 });
 
 // FUNCTIONS
+
+// Verify a couple of cards
 export function verifyCouple(cards, id) {
     return function(dispatch) {
+        // Get if there's already a card toggled and not found 
         let temp = cards.filter(card => card.toggled && !card.found)
         if ( temp.length === 1 ) {
+            // Compare values, if equal, the 2 cards are found
             if (temp[0].value === cards.find(c => c.id === id).value) {
                 dispatch(foundCard(temp[0].id))
                 dispatch(foundCard(id))
 
+                // If we found the remaining 2 last cards, end the game
                 if (cards.filter(card => card.found).length === cards.length - 2) {
                     setTimeout(() => {
                         dispatch(endGame())
                     }, 1000)
                 }
             } else {
+                // Else, retoggle the cards to hide them
                 setTimeout(() => {
                     dispatch(toggleCard(temp[0].id))
                     dispatch(toggleCard(id))
@@ -62,8 +68,9 @@ export function verifyCouple(cards, id) {
     }
 }
 
+// Draw a certain number of cards, according to the chose difficulty
 export function fetchCards(idDeck, difficulty) {
-    let nbCards = difficulty === 'easy' ? 1 : 10
+    let nbCards = difficulty === 'easy' ? 5 : 10
     return function(dispatch) {  
       return fetch(`https://deckofcardsapi.com/api/deck/${idDeck}/draw/?count=${nbCards}`)
         .then(
@@ -77,6 +84,7 @@ export function fetchCards(idDeck, difficulty) {
     }
 }
 
+// Fetch a deck from the API
 export function fetchDeck(difficulty) {
     return function(dispatch) {  
       return fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1`)

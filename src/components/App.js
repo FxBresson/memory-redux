@@ -11,6 +11,8 @@ import rootReducer from '../reducers/index'
 
 
 const loggerMiddleware = createLogger()
+// Default screen is home
+// Default history is empty
 const defaultState = {
   gameLogic: {
     status: 'difficulty-selection',
@@ -29,15 +31,7 @@ const store = createStore(
 )
 
 class App extends Component {
-  constructor () {
-    super()
-    // store.dispatch(fetchDeck()).then(() => console.log("Deck and cards received"))
-  }
   render() {
-
-    let status = store.getState().gameLogic.status;
-    console.log('test')
-
     return (
       <Provider store={store}>
         <div className="App">

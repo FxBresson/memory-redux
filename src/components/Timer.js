@@ -10,6 +10,7 @@ class Timer extends React.Component {
 		this.intervalHandler = null
     }
 
+    // Count a second
     tick() {
 		let newState = Object.assign({}, this.state, {
 			time: this.state.time+1

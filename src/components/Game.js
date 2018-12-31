@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Board from '../containers/Board'
 import Timer from './Timer'
 
@@ -9,8 +8,5 @@ const Game = () => (
         <Board/>
     </section>
 )
-
-// Game.propTypes = {
-// }
 
 export default Game

@@ -1,3 +1,6 @@
+/**
+ * Game Logic
+ */
 const gameLogic = (state = [], action) => {
     switch (action.type) {
         case 'LAUCH_GAME':

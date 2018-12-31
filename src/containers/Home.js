@@ -1,3 +1,7 @@
+/**
+ * Home Container
+ */
+
 import { connect } from 'react-redux'
 import { fetchDeck } from '../actions'
 import Home from '../components/Home'

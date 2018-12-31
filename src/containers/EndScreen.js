@@ -1,3 +1,7 @@
+/**
+ * End Screen Container
+ */
+
 import { connect } from 'react-redux'
 import EndScreen from '../components/EndScreen'
 import { restart } from '../actions'

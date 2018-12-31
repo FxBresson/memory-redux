@@ -13,7 +13,8 @@ const Card = ({ value, onClick, toggled }) => (
 
 Card.propTypes = {
     onClick: PropTypes.func.isRequired,
-    toggled: PropTypes.bool.isRequired
+    toggled: PropTypes.bool.isRequired,
+    value: PropTypes.string.isRequired
 }
 
 export default Card

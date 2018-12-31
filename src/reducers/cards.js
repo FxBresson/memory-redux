@@ -1,3 +1,6 @@
+/**
+ * Card Logic
+ */
 const cards = (state = [], action) => {
     switch (action.type) {
         case 'RECEIVE_CARDS': 
@@ -10,11 +13,12 @@ const cards = (state = [], action) => {
                 } 
             })
 
+            // Duplicated the cards
             temp = [...temp.map(card => { return {...card, id:card.id+'_A' } }),
                     ...temp.map(card => { return {...card, id:card.id+'_B' } })]
 
             // Shuffle card
-            var shuffle = require('shuffle-array')
+            let shuffle = require('shuffle-array')
             temp = shuffle(temp, { 'copy': true });
 
             return temp

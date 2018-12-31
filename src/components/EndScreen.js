@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { timeToString, dateToString } from '../Helper'
 
 const EndScreen = ({history, restart}) => (
@@ -25,5 +26,12 @@ const EndScreen = ({history, restart}) => (
     <button className="btn" onClick={restart}>Play again</button>
   </section>
 )
+
+
+EndScreen.propTypes = {
+  history: PropTypes.array.isRequired,
+  restart: PropTypes.func.isRequired
+}
+
 
 export default EndScreen
